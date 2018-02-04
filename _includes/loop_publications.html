@@ -1,0 +1,133 @@
+{% assign pubs = site.data.publications | reverse %}
+<h2>Articles as First or Last Author</h2>
+<ul class="cv">
+
+  {% for pub in pubs %}
+    {% if pub.type == 'journal' %}
+    <li class="cv">
+
+      <div data-badge-popover="right" data-badge-type="donut" data-doi="{% if pub.status == 'in press' %}{{ pub.preprint.doi }}{% else %}{{ pub.doi }}{% endif %}" data-hide-no-mentions="true" data-hide-less-than="0" class="altmetric-embed" style="float:right;clear:both"></div>
+
+      {{ pub.authors }}. {% if pub.doi %}
+      <a href="//dx.doi.org/{{ pub.doi }}">{{ pub.title }}</a>. {% elsif pub.pdf %}
+      <a href="{{ pub.pdf }}">{{ pub.title }}</a>. {% else %} {{ pub.title }}. {% endif %} {% if pub.journal %}<b>{{ pub.journal }}</b> {% if pub.status %}<b>{{ pub.status }}</b>{% else %}<b>{{pub.date | date: "%Y"}}</b>{% endif %}. {% endif %}{% if pub.doi %}doi: <a href="//dx.doi.org/{{ pub.doi }}">{{ pub.doi }}</a>. {% endif %}
+
+      <span class="small-icons">
+      {% if pub.biorxiv %}
+        <a href="{{ pub.biorxiv }}" title="bioRxiv"><i class="ai ai-biorxiv" aria-hidden="true"></i></a>
+      {% endif %}
+
+      {% if pub.comments %}
+        <a href="{{ pub.comments }}" title="comments"><i class="fa fa-comments-o" aria-hidden="true"></i></a>
+      {% endif %}
+
+      {% if pub.doi %}
+        <a href="//dx.doi.org/{{ pub.doi }}" title="DOI"><i class="ai ai-doi" aria-hidden="true"></i></a>
+      {% endif %}
+
+      {%if pub.pdf %}
+        <a href="{{ pub.pdf }}" title="PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+      {% endif %}
+
+
+    </span>
+
+    <!--{% if pub.slides %}
+    <p style="margin-top:0.25em">
+      <b>Slides</b>: {{ pub.slides.authors }} ({{ pub.slides.year }}): <a href="//dx.doi.org/{{ pub.slides.doi }}">{{ pub.slides.title }}</a>. figshare. doi: <a href="//dx.doi.org/{{ pub.slides.doi }}">{{ pub.slides.doi }}</a>.
+    </p>
+    {% endif %} -->
+
+    </li>
+    {% endif %}
+  {% endfor %}
+
+</ul>
+
+<h2>Articles as Co-Author</h2>
+<ul class="cv">
+
+  {% for pub in pubs %}
+    {% if pub.type == 'journal2' %}
+    <li class="cv">
+
+      <div data-badge-popover="right" data-badge-type="donut" data-doi="{% if pub.status == 'in press' %}{{ pub.preprint.doi }}{% else %}{{ pub.doi }}{% endif %}" data-hide-no-mentions="true" data-hide-less-than="0" class="altmetric-embed" style="float:right;clear:both"></div>
+
+      {{ pub.authors }}. {% if pub.doi %}
+      <a href="//dx.doi.org/{{ pub.doi }}">{{ pub.title }}</a>. {% elsif pub.pdf %}
+      <a href="{{ pub.pdf }}">{{ pub.title }}</a>. {% else %} {{ pub.title }}. {% endif %} {% if pub.journal %}<b>{{ pub.journal }}</b> {% if pub.status %}<b>{{ pub.status }}</b>{% else %}<b>{{pub.date | date: "%Y"}}</b>{% endif %}. {% endif %}{% if pub.doi %}doi: <a href="//dx.doi.org/{{ pub.doi }}">{{ pub.doi }}</a>. {% endif %}
+
+      <span class="small-icons">
+      {% if pub.biorxiv %}
+        <a href="{{ pub.biorxiv }}" title="bioRxiv"><i class="ai ai-biorxiv" aria-hidden="true"></i></a>
+      {% endif %}
+
+      {% if pub.comments %}
+        <a href="{{ pub.comments }}" title="comments"><i class="fa fa-comments-o" aria-hidden="true"></i></a>
+      {% endif %}
+
+      {% if pub.doi %}
+        <a href="//dx.doi.org/{{ pub.doi }}" title="DOI"><i class="ai ai-doi" aria-hidden="true"></i></a>
+      {% endif %}
+
+      {%if pub.pdf %}
+        <a href="{{ pub.pdf }}" title="PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+      {% endif %}
+
+
+    </span>
+
+    <!--{% if pub.slides %}
+    <p style="margin-top:0.25em">
+      <b>Slides</b>: {{ pub.slides.authors }} ({{ pub.slides.year }}): <a href="//dx.doi.org/{{ pub.slides.doi }}">{{ pub.slides.title }}</a>. figshare. doi: <a href="//dx.doi.org/{{ pub.slides.doi }}">{{ pub.slides.doi }}</a>.
+    </p>
+    {% endif %} -->
+
+    </li>
+    {% endif %}
+  {% endfor %}
+
+</ul>
+
+
+<h2>Preprints</h2>
+<ul class="cv">
+
+  {% for pub in pubs %} {% if pub.preprint %}
+
+  <li class="cv">
+
+    <div data-badge-popover="right" data-badge-type="donut" data-doi="{{ pub.preprint.doi }}" data-arxiv-id="{{ pub.preprint.arxiv-id }}" data-hide-no-mentions="true" class="altmetric-embed" style="float:right;clear:both"></div>
+
+    {{ pub.authors }} ({{pub.date | date: "%Y"}}). {% if pub.preprint.doi %}<a href="//dx.doi.org/{{ pub.preprint.doi }}">{{ pub.title }}</a>.{% endif %} {% if pub.preprint.url %}<a href="{{ pub.preprint.url }}">{{ pub.title }}</a>.{% endif %}
+
+
+    <i>{{ pub.preprint.server }}</i>. {% if pub.preprint.doi %}doi: <a href="//dx.doi.org/{{ pub.preprint.doi }}">{{ pub.preprint.doi }}</a>.{% endif %}
+
+    <span class="small-icons">
+         {% if pub.preprint.server == "arXiv" %}
+         <a href="{{ pub.preprint.url }}" title="arXiv"><i class="ai ai-arxiv" aria-hidden="true"></i></a>
+         {% endif %}
+
+         {% if pub.biorxiv %}
+         <a href="{{ pub.biorxiv }}" title="bioRxiv"><i class="ai ai-biorxiv" aria-hidden="true"></i></a>
+         {% endif %}
+
+         {% if pub.comments %}
+         <a href="{{ pub.comments }}"  title="comments"><i class="fa fa-comments-o" aria-hidden="true"></i></a>
+         {% endif %}
+
+         {% if pub.doi %}
+         <a href="//dx.doi.org/{{ pub.doi }}" title="DOI"><i class="ai ai-doi" aria-hidden="true"></i></a>
+         {% endif %}
+
+         {%if pub.preprint.pdf %}
+         <a href="{{ pub..preprint.pdf }}"  title="PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+         {% endif %}
+
+         </span>
+
+  </li>
+  {% endif %} {% endfor %}
+
+</ul>
