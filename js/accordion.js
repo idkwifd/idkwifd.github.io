@@ -24,4 +24,6 @@ $(function() {
     });
   }
 
+  document.getElementById("demo").innerHTML = hash;
+
 });
