@@ -27,4 +27,5 @@ $(function() {
     });
     window.alert("4");
   }
+  window.alert("++");
 });
