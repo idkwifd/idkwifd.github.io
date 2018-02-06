@@ -18,7 +18,7 @@
         {% else %}
           <b>
             {{pub.date | date: "%Y"}}
-            {% if pub.pageinfo %}({pub.pageinfo}){% endif %} 
+            {% if pub.pageinfo %}{{pub.pageinfo}}(){% endif %} 
           </b>
         {% endif %}. 
       {% endif %}
