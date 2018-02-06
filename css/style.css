@@ -584,7 +584,7 @@ a:hover img {
   min-height: 85px;
 }
 
-.plx-usage li, .plx-capture li, .plx-socialMedia li, .plx-citation li {
+.plx-usage li, .plx-capture li, .plx-socialMedia li, .plx-citation li, .plx-mention li {
   padding-bottom: 0em;
   padding-top: 0em;
   min-height: 0px;

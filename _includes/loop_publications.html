@@ -23,6 +23,8 @@
         {% endif %}. 
       {% endif %}
 
+      {% if pub.doi %}doi: <a href="//dx.doi.org/{{ pub.doi }}">{{ pub.doi }}</a>. {% endif %}
+
       <span class="small-icons">
         {% if pub.biorxiv %}
           <a href="{{ pub.biorxiv }}" title="bioRxiv"><i class="ai ai-biorxiv" aria-hidden="true"></i></a>
